@@ -7,7 +7,7 @@ import  { setSelectedDevice } from "../../redux/reducers/selecteddevice";
 const ChartHolder =  function(){
     const [filteredData, setFilteredData] = useState(undefined)
     const data = useSelector((state) => state.applicationdata.applicationdata);
-    const columns = [{selector: row => row.addr, name:'Address', sortable: true },{ selector: row => row.manufacturer, name:'Manufacturer', sortable: true },{ selector: row => row.model, name:'Model', sortable: true },{selector: row => row.firmware, name:'Firmware', sortable: true }, {selector: row => row.behind_version_number, name:'Risk', sortable: true }];
+    const columns = [{selector: row => row.addr, name:'Address', sortable: true },{ selector: row => row.manufacturer, name:'Manufacturer', sortable: true },{ selector: row => row.model, name:'Model', sortable: true },{selector: row => row.firmware, name:'Firmware', sortable: true }, {selector: row => row.behind_version_number, name:'Risk', sortable: true },  {selector: row => row.created_at, name:'Created', sortable: true },  {selector: row => row.last_seen, name:'Last Seen', sortable: true }];
 
     const statusType = useSelector((state) => state.statustype.statustype);
     const selectedDevice = useSelector((state) => state.selecteddevice.selecteddevice);
