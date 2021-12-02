@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import DataTable from "react-data-table-component";
 import  { setSelectedDevice } from "../../redux/reducers/selecteddevice";
 import {processCollectionByManufacturer, processCollectionByModel} from "../../data/dataUtils";
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer, ScatterChart, Scatter, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { PieChart, Pie, Cell, ScatterChart, Scatter, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 
 const ChartHolder =  function(){
@@ -116,7 +116,6 @@ const ChartHolder =  function(){
         dispatch(setSelectedDevice(event));
 
     };
-    const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042','#0088FE', '#00C49F', '#FFBB28', '#FF8042','#0088FE', '#00C49F', '#FFBB28', '#FF8042','#0088FE', '#00C49F', '#FFBB28', '#FF8042','#0088FE', '#00C49F', '#FFBB28', '#FF8042','#0088FE', '#00C49F', '#FFBB28', '#FF8042','#0088FE', '#00C49F', '#FFBB28', '#FF8042','#0088FE', '#00C49F', '#FFBB28', '#FF8042','#0088FE', '#00C49F', '#FFBB28', '#FF8042','#0088FE', '#00C49F', '#FFBB28', '#FF8042','#0088FE', '#00C49F', '#FFBB28', '#FF8042',,];
 
     const conditionalRowStyles = [
         {
@@ -192,28 +191,7 @@ const ChartHolder =  function(){
             },
         }
     ];
-    const treePropsModel = {
-        animation: {
-            damping: 9,
-            stiffness: 300
-        },
-        data: dataByModel,
-        height: 300,
-        getLabel: x => x.name,
-        width: 350
-    };
-    const RADIAN = Math.PI / 180;
-    const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
-        const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-        const x = cx + radius * Math.cos(-midAngle * RADIAN);
-        const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
-        return (
-            <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
-                {`${(percent * 100).toFixed(0)}%`}
-            </text>
-        );
-    };
     let renderLabel = function(entry) {
         return entry.name;
     }
@@ -371,6 +349,7 @@ const ChartHolder =  function(){
                </div>
                <div className="flex-list">
                    <div className="dash_item_2x" >
+                       <div className="dash_title"> Devices Added Over Time</div>
                        <ScatterChart
                            width={1050}
                            height={400}
@@ -385,9 +364,9 @@ const ChartHolder =  function(){
                            <XAxis type="category" dataKey={'created_at'} name="Created" unit=" Date" />
                            <YAxis type="number" dataKey={'risk'} name="Risk" unit=" risk" />
                            <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-                           <Scatter name="A school" data={filteredData} fill="#8884d8" >
+                           <Scatter name="A school" data={filteredData.sort((a, b) => a.created_at > b.created_at ? 1 : -1)} fill="#8884d8" >
                                {data.map((entry, index) => (
-                                   <Cell key={`cell-${index}`}  fill={getColor(entry.risk)}   />
+                                   <Cell key={`cell-${index}`}  fill="#ffcc00"   />
                                ))}
                            </Scatter>
                        </ScatterChart>
