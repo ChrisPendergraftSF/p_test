@@ -31,7 +31,7 @@ export const filterCollectionByManufacturer = (data, manufacturer) => {
 export const processRiskByManufacturer = (data, manufacturer) => {
     let count = 0;
     let risk = 0;
-    let result  = filterCollectionByManufacturer(data, manufacturer).forEach((item) =>{
+    let result  = filterCollectionByManufacturer(data, manufacturer).map((item) =>{
         count = count + item.risk;
     })
     risk =  count/result.length;
@@ -43,7 +43,7 @@ export const processRiskByModel = (data, model) => {
     let count =0;
     let risk;
     let local = filterColletionByModel(data, model);
-    let result  = local.forEach((item) =>{
+    let result  = local.map((item) =>{
         count = count + item.risk;
     })
     risk =  count/result.length;
@@ -51,7 +51,7 @@ export const processRiskByModel = (data, model) => {
     return ret;
 };
 export const processCollectionByModel = (_data) => {
-
+    let rez = [];
     let helper = [];
     _data.forEach((item, index)=>{
 
@@ -81,7 +81,7 @@ export const processCollectionByModel = (_data) => {
 
 };
 export const processCollectionByManufacturer = (_data) => {
-
+    let rez = [];
     let helper = [];
     _data.forEach((item, index)=>{
 
