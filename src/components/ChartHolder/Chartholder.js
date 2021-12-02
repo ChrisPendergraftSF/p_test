@@ -102,8 +102,6 @@ const ChartHolder =  function(){
             setFilteredData( test );
             let test2 = processCollectionByModel(test);
             let test3 = processCollectionByManufacturer(test);
-            console.log('model', test2);
-            console.log('manufacturer', test3);
             setDataByModel(test2);
             setDataByManufacturer(test3);
 
@@ -112,9 +110,7 @@ const ChartHolder =  function(){
     },[setFilteredData,filteredData, handleStatusFilter, data]);
 
     const handleDetail = (event) => {
-        console.log('sssss', event);
         dispatch(setSelectedDevice(event));
-
     };
 
     const conditionalRowStyles = [
@@ -199,8 +195,6 @@ const ChartHolder =  function(){
         //value from 0 to 1
 
         let value  = (100 - _value);
-        console.log(value);
-
         function perc2color(perc,min,max) {
             let base = (max - min);
 
