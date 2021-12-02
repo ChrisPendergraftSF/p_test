@@ -9,6 +9,9 @@
 6. Display a firmware list in said detail that displays installed version in a list of available versions, indicated by label and arrow. 
 7. Calculate firmware risk, based on number of versions behind
 8. Display that risk in color, so user can identify at a glance.
+9. Added a few charts to aggregate devices by model/manufacture and to gauge risk. 
+10. Risk is calcualte in two fields - FM risk based on how far behind in version of the ttl version availble. 2nd is Pass Risk, this is assumed if the create_at and last seen is the same, then good chance that the pass is set to default. 
+11. Added scatter chart to show devices added over time, the Y-axis displays the current device FW risk. 
 
 
 # Application flow
