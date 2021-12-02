@@ -51,7 +51,7 @@ export const processRiskByModel = (data, model) => {
     return ret;
 };
 export const processCollectionByModel = (_data) => {
-    let rez = [];
+
     let helper = [];
     _data.forEach((item, index)=>{
 
@@ -81,7 +81,7 @@ export const processCollectionByModel = (_data) => {
 
 };
 export const processCollectionByManufacturer = (_data) => {
-    let rez = [];
+
     let helper = [];
     _data.forEach((item, index)=>{
 
